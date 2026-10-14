@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+  <meta charset="UTF-8">
+  <title>Список землетрясений</title>
+</head>
+<body>
+
+<h2><a href="index.html">Самые разрушительные землетрясения</a></h2>
+<a href="table.html">Список землетрясений</a>
+<hr>
+
+<details open>
+  <summary>График</summary>
+  <form action="#">
+    <p><b>Значение по оси OX</b></p>
+    <input type="radio" name="ox" value="country" id="ox_country"> Страна<br>
+    <input type="radio" name="ox" value="year" id="ox_year"> Год<br>
+    <input type="radio" name="ox" value="type" id="ox_type"> Тип<br>
+
+    <p><b>Значение по оси OY</b></p>
+    <input type="checkbox" name="oy" value="mag" id="oy_mag"> Магнитуда<br>
+    <input type="checkbox" name="oy" value="victims" id="oy_victims"> Число жертв<br>
+    <input type="checkbox" name="oy" value="damage" id="oy_damage"> Экономический ущерб<br>
+
+    <input type="button" value="Построить" id="build">
+  </form>
+  <p>Здесь будет график</p>
+</details>
+
+<details open>
+  <summary>Фильтр</summary>
+  <form action="#">
+    <p><label for="страна">Страна:</label> <input type="text" id="страна" name="страна"></p>
+    <p>Год:
+      <label for="год_от">от</label> <input type="text" id="год_от" name="год_от">
+      <label for="год_до">до</label> <input type="text" id="год_до" name="год_до">
+    </p>
+    <p>Магнитуда:
+      <label for="магнитуда_от">от</label> <input type="number" id="магнитуда_от" name="магнитуда_от">
+      <label for="магнитуда_до">до</label> <input type="number" id="магнитуда_до" name="магнитуда_до">
+    </p>
+    <p>Число жертв:
+      <label for="жертвы_от">от</label> <input type="number" id="жертвы_от" name="жертвы_от">
+      <label for="жертвы_до">до</label> <input type="number" id="жертвы_до" name="жертвы_до">
+    </p>
+    <input type="button" value="Найти" id="find">
+  </form>
+</details>
+
+<details open>
+  <summary>Сортировка</summary>
+  <form action="#">
+    <p>
+      Первый уровень:
+      <select name="sort1">
+        <option value="none">Нет</option>
+        <option value="mag">Магнитуда</option>
+        <option value="date">Дата</option>
+        <option value="country">Страна</option>
+        <option value="victims">Число жертв</option>
+        <option value="damage">Ущерб</option>
+      </select>
+      <input type="checkbox" name="desc1"> по убыванию?
+    </p>
+    <p>
+      Второй уровень:
+      <select name="sort2">
+        <option value="none">Нет</option>
+        <option value="mag">Магнитуда</option>
+        <option value="date">Дата</option>
+        <option value="country">Страна</option>
+        <option value="victims">Число жертв</option>
+        <option value="damage">Ущерб</option>
+      </select>
+      <input type="checkbox" name="desc2"> по убыванию?
+    </p>
+    <input type="button" value="Сортировать" id="sort">
+  </form>
+</details>
+
+<h3>Список землетрясений</h3>
+
+<table border="1" cellpadding="4" width="100%">
+  <tr>
+    <th>Магнитуда</th>
+    <th>Дата</th>
+    <th>Страна</th>
+    <th>Число жертв</th>
+    <th>Экономический ущерб, млрд $</th>
+  </tr>
+  <tr>
+    <td>7,6</td>
+    <td>28.07.1976</td>
+    <td>Китай</td>
+    <td>242 000</td>
+    <td>7.5</td>
+  </tr>
+  <tr>
+    <td>9,1</td>
+    <td>26.12.2004</td>
+    <td>Индонезия</td>
+    <td>227 898</td>
+    <td>6.7</td>
+  </tr>
+      <tr>
+        <td>9,5</td>
+        <td>22.05.1960</td>
+        <td>Чили</td>
+        <td>1 655</td>
+        <td>1,5</td>
+    </tr>
+    <tr>
+        <td>9,2</td>
+        <td>28.03.1964</td>
+        <td>США (Аляска)</td>
+        <td>131</td>
+        <td>1,0</td>
+    </tr>
+    <tr>
+        <td>9,1</td>
+        <td>26.12.2004</td>
+        <td>Индонезия</td>
+        <td>227 898</td>
+        <td>15,0</td>
+    </tr>
+    <tr>
+        <td>9,0</td>
+        <td>11.03.2011</td>
+        <td>Япония</td>
+        <td>15 894</td>
+        <td>360,0</td>
+    </tr>
+    <tr>
+        <td>8,8</td>
+        <td>27.02.2010</td>
+        <td>Чили</td>
+        <td>562</td>
+        <td>30,0</td>
+    </tr>
+    <tr>
+        <td>8,8</td>
+        <td>31.01.1906</td>
+        <td>Эквадор</td>
+        <td>1 000</td>
+        <td>2,5</td>
+    </tr>
+    <tr>
+        <td>8,6</td>
+        <td>11.04.2012</td>
+        <td>Индонезия</td>
+        <td>10</td>
+        <td>0,5</td>
+    </tr>
+    <tr>
+        <td>8,6</td>
+        <td>28.03.2005</td>
+        <td>Индонезия</td>
+        <td>1 313</td>
+        <td>1,2</td>
+    </tr>
+    <tr>
+        <td>8,5</td>
+        <td>15.08.1950</td>
+        <td>Индия (Ассам)</td>
+        <td>1 526</td>
+        <td>3,0</td>
+    </tr>
+    <tr>
+        <td>8,5</td>
+        <td>13.10.1963</td>
+        <td>Россия (Курилы)</td>
+        <td>0</td>
+        <td>0,1</td>
+    </tr>
+    <tr>
+        <td>8,4</td>
+        <td>25.05.1935</td>
+        <td>Пакистан</td>
+        <td>60 000</td>
+        <td>5,0</td>
+    </tr>
+    <tr>
+        <td>8,4</td>
+        <td>16.09.2015</td>
+        <td>Чили</td>
+        <td>15</td>
+        <td>0,1</td>
+    </tr>
+    <tr>
+        <td>8,3</td>
+        <td>25.09.2003</td>
+        <td>Япония</td>
+        <td>0</td>
+        <td>0,1</td>
+    </tr>
+    <tr>
+        <td>8,3</td>
+        <td>31.05.1935</td>
+        <td>Пакистан</td>
+        <td>30 000</td>
+        <td>4,0</td>
+    </tr>
+    <tr>
+        <td>8,3</td>
+        <td>15.06.1896</td>
+        <td>Япония</td>
+        <td>27 122</td>
+        <td>6,0</td>
+    </tr>
+    <tr>
+        <td>8,2</td>
+        <td>28.02.1969</td>
+        <td>Португалия (Азорские о-ва)</td>
+        <td>13</td>
+        <td>0,1</td>
+    </tr>
+    <tr>
+        <td>8,2</td>
+        <td>23.12.1972</td>
+        <td>Никарагуа</td>
+        <td>10 000</td>
+        <td>2,0</td>
+    </tr>
+    <tr>
+        <td>8,1</td>
+        <td>26.05.1983</td>
+        <td>Япония</td>
+        <td>104</td>
+        <td>1,5</td>
+    </tr>
+    <tr>
+        <td>8,1</td>
+        <td>02.03.1933</td>
+        <td>Япония</td>
+        <td>3 064</td>
+        <td>2,0</td>
+    </tr>
+    <tr>
+        <td>8,0</td>
+        <td>19.09.1985</td>
+        <td>Мексика</td>
+        <td>9 500</td>
+        <td>4,0</td>
+    </tr>
+    <tr>
+        <td>8,0</td>
+        <td>04.02.1976</td>
+        <td>Гватемала</td>
+        <td>23 000</td>
+        <td>1,5</td>
+    </tr>
+    <tr>
+        <td>7,9</td>
+        <td>16.12.1920</td>
+        <td>Китай (Ганьсу)</td>
+        <td>235 502</td>
+        <td>10,0</td>
+    </tr>
+    <tr>
+        <td>7,9</td>
+        <td>28.07.1976</td>
+        <td>Китай (Таншань)</td>
+        <td>242 419</td>
+        <td>10,0</td>
+    </tr>
+    <tr>
+        <td>7,8</td>
+        <td>26.12.1939</td>
+        <td>Турция</td>
+        <td>32 700</td>
+        <td>3,0</td>
+    </tr>
+    <tr>
+        <td>7,8</td>
+        <td>22.05.1927</td>
+        <td>Китай</td>
+        <td>200 000</td>
+        <td>8,0</td>
+    </tr>
+    <tr>
+        <td>7,8</td>
+        <td>17.08.1999</td>
+        <td>Турция</td>
+        <td>17 118</td>
+        <td>20,0</td>
+    </tr>
+    <tr>
+        <td>7,7</td>
+        <td>08.10.2005</td>
+        <td>Пакистан</td>
+        <td>86 000</td>
+        <td>5,2</td>
+    </tr>
+    <tr>
+        <td>7,7</td>
+        <td>12.01.2010</td>
+        <td>Гаити</td>
+        <td>222 570</td>
+        <td>7,8</td>
+    </tr>
+    <tr>
+        <td>7,7</td>
+        <td>28.07.1976</td>
+        <td>Китай</td>
+        <td>242 000</td>
+        <td>10,0</td>
+    </tr>
+    <tr>
+        <td>7,6</td>
+        <td>26.04.2015</td>
+        <td>Непал</td>
+        <td>8 964</td>
+        <td>10,0</td>
+    </tr>
+    <tr>
+        <td>7,6</td>
+        <td>25.01.1999</td>
+        <td>Колумбия</td>
+        <td>1 185</td>
+        <td>1,9</td>
+    </tr>
+    <tr>
+        <td>7,6</td>
+        <td>16.08.1976</td>
+        <td>Филиппины</td>
+        <td>8 000</td>
+        <td>2,5</td>
+    </tr>
+    <tr>
+        <td>7,5</td>
+        <td>28.11.2018</td>
+        <td>Индонезия</td>
+        <td>4 340</td>
+        <td>1,5</td>
+    </tr>
+    <tr>
+        <td>7,5</td>
+        <td>12.11.2017</td>
+        <td>Иран</td>
+        <td>620</td>
+        <td>1,0</td>
+    </tr>
+    <tr>
+        <td>7,5</td>
+        <td>04.02.1976</td>
+        <td>Гватемала</td>
+        <td>22 778</td>
+        <td>1,5</td>
+    </tr>
+    <tr>
+        <td>7,5</td>
+        <td>31.05.1970</td>
+        <td>Перу</td>
+        <td>66 794</td>
+        <td>0,5</td>
+    </tr>
+    <tr>
+        <td>7,4</td>
+        <td>06.09.2018</td>
+        <td>Япония</td>
+        <td>41</td>
+        <td>2,0</td>
+    </tr>
+    <tr>
+        <td>7,4</td>
+        <td>04.09.2010</td>
+        <td>Новая Зеландия</td>
+        <td>0</td>
+        <td>4,0</td>
+    </tr>
+    <tr>
+        <td>7,4</td>
+        <td>21.11.2022</td>
+        <td>Индонезия</td>
+        <td>335</td>
+        <td>0,1</td>
+    </tr>
+    <tr>
+        <td>7,3</td>
+        <td>16.04.2016</td>
+        <td>Эквадор</td>
+        <td>676</td>
+        <td>3,0</td>
+    </tr>
+    <tr>
+        <td>7,3</td>
+        <td>24.11.2015</td>
+        <td>Перу</td>
+        <td>0</td>
+        <td>0,1</td>
+    </tr>
+    <tr>
+        <td>7,3</td>
+        <td>14.04.2016</td>
+        <td>Япония</td>
+        <td>9</td>
+        <td>10,0</td>
+    </tr>
+    <tr>
+        <td>7,2</td>
+        <td>28.09.2018</td>
+        <td>Индонезия</td>
+        <td>2 256</td>
+        <td>1,0</td>
+    </tr>
+    <tr>
+        <td>7,2</td>
+        <td>23.10.2011</td>
+        <td>Турция</td>
+        <td>604</td>
+        <td>2,0</td>
+    </tr>
+    <tr>
+        <td>7,2</td>
+        <td>03.09.1978</td>
+        <td>Германия</td>
+        <td>0</td>
+        <td>0,1</td>
+    </tr>
+    <tr>
+        <td>7,1</td>
+        <td>19.08.2018</td>
+        <td>Фиджи</td>
+        <td>0</td>
+        <td>0,1</td>
+    </tr>
+    <tr>
+        <td>7,1</td>
+        <td>01.09.1923</td>
+        <td>Япония</td>
+        <td>142 800</td>
+        <td>3,0</td>
+    </tr>
+    <tr>
+        <td>7,1</td>
+        <td>13.04.2010</td>
+        <td>Китай</td>
+        <td>2 698</td>
+        <td>0,1</td>
+    </tr>
+    <tr>
+        <td>7,0</td>
+        <td>12.01.2010</td>
+        <td>Гаити</td>
+        <td>316 000</td>
+        <td>7,8</td>
+    </tr>
+    <tr>
+        <td>7,0</td>
+        <td>26.12.2003</td>
+        <td>Иран</td>
+        <td>26 200</td>
+        <td>0,5</td>
+    </tr>
+</table>
+
+
+
+
+</body>
+</html>
